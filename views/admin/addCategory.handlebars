@@ -1,0 +1,82 @@
+<section class="page-image page-image-about md-padding">
+	<h1 class="text-white text-center">ADMIN</h1>
+</section>
+<style>
+	.btn {
+		width: 100px;
+		margin: 5px;
+	}
+</style>
+<section id="aboutus" class="md-padding">
+	<div class="container">
+		{{>admin-nav}}
+		<div class="clearfix"></div>
+		<div class="mb-5"></div>
+		{{#if sessionFlash.message}}
+		<div class="{{sessionFlash.type}}">{{sessionFlash.message}}</div>
+		{{/if}}
+		<div class="row">
+
+			<div class="col-md-4">
+			 {{#if (UpdateAdd Acategory)}}
+				 <form action="/admin/category/{{Acategory._id}}?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <input type="hidden" name="_method" value="PUT">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input class="form-control" name="content" type="text" value="{{Acategory.content}}" placeholder="category name*"
+									required="required" data-validation-required-message="Please enter Category name.">
+								<p class="help-block text-danger"></p>
+							</div>
+
+						</div>
+						<div class="clearfix"></div>
+						<div class="col-lg-12 btn-block">
+							<div id="success"></div>
+							<button class="btn btn-success btn-block" style="margin-left: auto; width:100%!important"
+								type="submit">Update
+								Category</button>
+						</div>
+					</div>
+
+				</form>
+				 {{else}}
+				 	<form method="POST" action="" enctype="multipart/form-data">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input class="form-control" name="content" type="text" placeholder="category name enter*"
+									required="required" data-validation-required-message="Please enter Category name.">
+								<p class="help-block text-danger"></p>
+							</div>
+
+						</div>
+						<div class="clearfix"></div>
+						<div class="col-lg-12 btn-block">
+							<div id="success"></div>
+							<button class="btn btn-success btn-block" style="margin-left: auto; width:100%!important"
+								type="submit">Add
+								Category</button>
+						</div>
+					</div>
+
+				</form>
+			 {{/if}}	
+			</div>
+			<div class="col-md-8">
+
+				{{#each category}}
+				<div>{{content}}
+					<a href="/admin/category/edit/{{_id}}" class="btn btn-warning">Update</a>
+					<form action="/admin/category/delete/{{_id}}?_method=DELETE" method="POST" style="display: contents;">
+						<input type="hidden" name="_method" value="DELETE">
+						<button type="submit" class="btn btn-danger">Delete</button>
+					</form>
+				</div> 
+				{{/each}}
+
+			</div>
+		</div>
+
+	</div>
+</section>

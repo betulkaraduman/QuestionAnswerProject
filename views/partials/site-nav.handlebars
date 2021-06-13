@@ -1,0 +1,49 @@
+<nav class="navbar navbar-container navbar-expand-lg navbar-dark fixed-top mb-4" id="mainNav">
+	<div class="container">
+		<a class="navbar-brand js-scroll-trigger" href="/">FAQ</a>
+		<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+			aria-label="Toggle navigation">
+			Menu
+			<i class="fas fa-bars"></i>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav text-uppercase ml-auto">
+				<li class="nav-item">
+					<a class="nav-link" href="/">Home</a>
+				</li>
+				{{!-- <li>
+					<a style="color:red">{{adminCheck}}</a>
+				</li> --}}
+				{{#if (adminCheck )}}
+				<li class="nav-item">
+					<a class="nav-link" href="/admin">Admin</a>
+				</li>
+				{{/if}}
+				<li class="nav-item">
+					<a class="nav-link" href="/question/questions">Questions</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/contact">Contact</a>
+				</li>
+				<!--unless olmaması durumunu ifade eder -->
+				{{#unless displayLink}}
+				<li class="nav-item">
+					<a class="nav-link" href="/auth/login">Log In</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/auth/register">Register</a>
+				</li>
+				{{/unless}}
+				{{#if displayLink}}
+				<li class="nav-item">
+					<a class="nav-link" href="/auth/logout">Logout</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link" href="/auth/myAccount">My Account</a>
+				</li>
+				{{/if}}
+			</ul>
+		</div>
+	</div>
+</nav>

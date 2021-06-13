@@ -1,0 +1,40 @@
+<section class="page-image page-image-about md-padding">
+
+</section>
+<section id="aboutus" class="md-padding">
+    <div class="container">
+        {{>user-nav}}
+
+    </div>
+</section>
+
+<!--==========================
+    THE TEAM
+============================-->
+
+<section id="contact" class="md-padding">
+    <div class="container">
+
+        <div class="row text-center">
+            <div class="col-md-4 offset-md-4">
+                <div class="section-header">
+                    <h2 class="title">{{auth.name}}</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="/{{auth.profile_image}}" width="100%">
+               </div>  
+                <div class="col-lg-6" style="font-size: 17px;font-weight:600">
+                <p>{{auth.email}}</p>
+                <p>{{auth.title}}</p>
+                <p>{{auth.about}}</p>
+                <p>{{auth.place}}</p>
+                <p>{{auth.website}}</p>
+            </div>
+        </div>
+
+    </div>
+</section>

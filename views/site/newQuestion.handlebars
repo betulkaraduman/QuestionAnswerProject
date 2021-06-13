@@ -1,0 +1,47 @@
+<section class="page-image page-image-contact md-padding">
+</section>
+
+<!--==========================
+    Contact Section
+============================-->
+<section id="contact" class="md-padding">
+	<div class="container">
+
+		<div class="row text-center">
+			<div class="col-md-4 offset-md-4">
+				<div class="section-header">
+					<h2 class="title">New Question</h2>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-lg-12">
+				<form action="/quesiton/addQuestion" method="POST">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="form-group">
+								<input class="form-control" name="title" type="text" placeholder="Question Title *"
+									required="required" data-validation-required-message="Please enter question title.">
+								<p class="help-block text-danger"></p>
+							</div>
+							<div class="form-group">
+								<textarea class="form-control" name="content" rows="5" type="text" placeholder="Question Content *"
+									required="required" data-validation-required-message="Please enter question content .">
+								<p class="help-block text-danger"></p>
+							</div>
+						</div>
+			
+					</div>
+					<div class="clearfix"></div>
+					<div class="col-lg-12 text-center">
+						<div id="success"></div>
+						<button id="sendregisterButton" class="main-btn" type="submit">Add New Question</button>
+					</div>
+			</div>
+			</form>
+		</div>
+	</div>
+
+	</div>
+</section>

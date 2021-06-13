@@ -1,0 +1,73 @@
+<section class="page-image page-image-contact md-padding">
+</section>
+
+<section id="contact" class="md-padding">
+    <div class="container">
+
+        <div class="row text-center">
+            <div class="col-md-4 offset-md-4">
+                <div class="section-header">
+                    <h2 class="title">Question</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                {{#if sessionFlash.message}}
+                <div class="{{sessionFlash.type}}">{{sessionFlash.message}}</div>
+                {{/if}}
+                {{#each question}}
+                <h5 style="text-align: center; font-size:20px">{{title}}</h5>
+                {{/each}}
+                {{#each auth}}
+                <p style="text-align: center; color:#9da9b8">by {{name}} </p>
+                {{/each}}
+                {{#each question}}
+                <p>{{content}}</p>
+
+                {{/each}}
+                <br>
+                <h3 style="text-align: center;">Answers</h3>
+                <ul>
+                    {{#each answers}}
+                    <li style="margin:10px;padding:40px;border-bottom: 1px solid #ffb1b1;">
+
+
+                        <span>{{content}}</span>
+
+                         {{#if (LikeState likes)}}
+                        <a href="/answer/unlike/{{_id}}"><i class="fas fa-heart fa-2x" style="color:#17a2b8;float:right;padding: 15px;
+    margin: -5px;"></i></a> <span><b style="font-size: 18px;float:right;float:right;padding: 10px;"> {{LikeCount
+                                likes}}</b></span><br>
+
+                        {{else}}
+                        <a href="/answer/like/{{_id}}"><i class="far fa-heart fa-2x" style="color:#17a2b8;float:right;padding: 15px;
+    margin: -5px;"></i></a> <span><b style="font-size: 18px;float:right;padding: 10px;"> {{LikeCount
+                                likes}}</b></span><br>
+<br>
+                        {{/if}}
+                         {{#if (DeleteAnswer auth)}}
+                         <form action="/answer/delete/{{_id}}?_method=DELETE" method="POST"
+                                    style="display: inline-block;" class="mt-4">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" style="font-weight: bold;">Delete Your Answer</button>
+                                </form>
+                        {{/if}} 
+                      
+                        {{/each}}
+
+                 <p>{{deleteUser.activeUser}}</p>
+
+
+                    {{#each answers}}
+                    </li>
+                    {{/each}}
+                </ul>
+           
+            </div>      {{#paginate  current=current pages=pages}}
+               {{/paginate}}
+        </div>
+
+    </div>
+</section>

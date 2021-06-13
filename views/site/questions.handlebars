@@ -1,0 +1,79 @@
+<section class="page-image page-image-contact md-padding">
+</section>
+
+<!--==========================
+    Contact Section
+============================-->
+<section id="contact" class="md-padding">
+    <div class="container">
+
+        <div class="row text-center">
+            <div class="col-md-4 offset-md-4">
+                <div class="section-header">
+                    <h2 class="title">New Question</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                {{#if sessionFlash.message}}
+                <div class="{{sessionFlash.type}}">{{sessionFlash.message}}</div>
+                {{/if}}
+                <table class="table" style="text-align: center;min-height:400px">
+                    <thead>
+                        <tr>
+                            <th style="width: 5%;"></th>
+                            <th style="width: 40%;">Title</th>
+                            {{!-- <th style="width: 35%;">Content</th> --}}
+                            <th style="width: 45%;">Process</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each question}}
+                        <tr>
+                            {{!-- <i class="fas fa-heart fa-2x" style="color:#76d9a2"></i> --}}
+                            {{#if (LikeState auth likes)}}
+                            <td><a href="/question/unlike/{{_id}}"><i class="fas fa-heart fa-2x"
+                                        style="color:#17a2b8"></i></a></td>
+
+                            {{else}}
+                            <td><a href="/question/like/{{_id}}"><i class="far fa-heart fa-2x"
+                                        style="color:#17a2b8"></i></a></td>
+                            {{/if}}
+                            <td>{{title}}</td>
+                            {{!-- <td>{{likes}}</td>
+                            <td>{{auth}}</td> --}}
+                            <td>
+                                <a href="/question/edit/{{_id}}" style="font-weight: bold;color:#fd10b4">Update</a>
+                                <a href="/question/oneQuestion/{{_id}}"
+                                    style="font-weight: bold;color:#6d6def;padding:10px">Detail</a>
+                                    
+                            <a href="/question/addNewAnswer/{{_id}}"
+                                    style="font-weight: bold;color:#efa96d;padding:10px">Add New Answer</a>
+
+                                <form action="/question/delete/{{_id}}?_method=DELETE" method="POST"
+                                    style="display: inline-block;">
+                                    <input type="hidden" name="_method" value="DELETE">
+                                    <button type="submit" style="font-weight: bold;">Delete</button>
+                                </form>
+                            </td>
+
+                            {{!-- {{#if (AnswerCheck  answers)}}
+                             <td><a href="/answer/{{_id}}" style="font-weight: bold;color:#fd10b4">Answers</a> </td>
+                            {{else}}
+                             <td><a href="/answer/{{_id}}" style="font-weight: bold;color:#fd10b4">Yok ki</a> </td>
+                            {{/if}} --}}
+
+                           
+                        </tr>{{/each}}
+                    </tbody>
+                </table>
+               
+            </div>
+             {{#paginate  current=current pages=pages}}
+               {{/paginate}}
+        </div>
+
+    </div>
+</section>

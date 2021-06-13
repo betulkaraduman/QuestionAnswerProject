@@ -1,0 +1,67 @@
+<section class="page-image page-image-contact md-padding">
+</section>
+
+<!--==========================
+    Contact Section
+============================-->
+<section id="contact" class="md-padding">
+    <div class="container">
+
+        <div class="row text-center">
+            <div class="col-md-4 offset-md-4">
+                <div class="section-header">
+                    <h2 class="title">Update Category</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <form action="/question/edit/{{question._id}}?_method=PUT" method="POST">
+                    {{!-- <input type="hidden" name="_method" value="PUT"> --}}
+                     <div class="row">
+                        <div class="col-md-8 offset-2">
+                            
+                            <div class="form-group"> 
+                                <input type="hidden" name="selected" value="{{selectedID}}">
+                                <input class="form-control pt-4" readonly value="{{selected}}">
+							</div>
+                            <div class="form-group">
+                               	<select class="form-control" name="category">
+                               <option value="none" selected>Select new category</option>
+							    	{{#each categories}}
+                                     <option value="{{_id}}">{{content}}</option>
+                                   
+									{{/each}}
+								</select>
+
+								<p class="help-block text-danger"></p>
+								<p class="help-block text-danger"></p>
+							</div>
+                            <div class="form-group">
+                                <input class="form-control" name="title" value="{{question.title}}" type="text"
+                                    placeholder="Tile*" required="required"
+                                    data-validation-required-message="Please enter your username.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                            <div class="form-group">
+                                <input class="form-control" name="content" value="{{question.content}}" type="text"
+                                    placeholder="Content*" required="required"
+                                    data-validation-required-message="Please enter your email.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+                        </div>
+                
+                        <div class="col-md-2"></div>
+                        <div class="clearfix"></div>
+                        <div class="col-lg-12 text-center">
+                            <div id="success"></div>
+                            <button class="main-btn" type="submit">Update Question</button>
+                        </div>
+                    </div>                 
+                </form>
+            </div>
+        </div>
+
+    </div>
+</section>

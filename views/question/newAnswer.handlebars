@@ -1,0 +1,52 @@
+<section class="page-image page-image-contact md-padding">
+</section>
+
+<!--==========================
+    Contact Section
+============================-->
+<section id="contact" class="md-padding">
+    <div class="container">
+
+        <div class="row text-center">
+            <div class="col-md-4 offset-md-4">
+                <div class="section-header">
+                    <h2 class="title">New Question</h2>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                {{#if sessionFlash.message}}
+                <div class="{{sessionFlash.type}}">{{sessionFlash.message}}</div>
+                {{/if}}
+                {{#each question}}
+                <h5 style="text-align: center; font-size:20px">{{title}}</h5>
+                <form action="/answer/newAnswer" method="POST">
+                    <input type="hidden" name="question" type="text" placeholder="Answer *" value="{{_id}}"
+                        required="required" data-validation-required-message="Please enter question title.">
+                    <p class="help-block text-danger"></p>
+                    <div class="row">
+                        <div class="col-md-10 offset-1" style="height: 50px !important;">
+                            <div class="form-group" style="margin-bottom: 0px!important;">
+                                <input class="form-control" style="padding: 15px;" name="content" type="text"
+                                    placeholder="Answer *" required="required"
+                                    data-validation-required-message="Please enter question title.">
+                                <p class="help-block text-danger"></p>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-4 offset-4 text-center">
+                        <div id="success"></div>
+                        <button id="sendregisterButton" class="btn btn-outline-info btn-sm my-4 btn-block" style="font-weight: bold; font-size:18px;" type="submit">Add New
+                            Answer</button>
+                    </div>
+                </form>
+                {{/each}}
+            </div>
+        </div>
+
+    </div>
+</section>
